@@ -1,0 +1,8 @@
+.button-column {
+    display: flex;
+    flex-direction: row;
+}
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }

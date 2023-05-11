@@ -1,0 +1,40 @@
+<h1 mat-dialog-title class="form-title">{{ warehouse ? 'Editar Patito':'Guardar Patito' }}</h1>
+
+<form [formGroup]="createPatitoForm" (ngSubmit)="submit()">
+    <div mat-dialog-content>
+        <ng-template #target></ng-template>
+        <div class="field" style="width: 350px">
+        <mat-form-field style="width: 70%;">
+            <mat-label>Color</mat-label>
+            <mat-select formControlName="color">
+                <mat-option [disabled]="warehouse != null" *ngFor="let color of colors" [value]="color">{{color | colorPipe}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </div>
+        <div class="field" style="width: 350px">
+            <mat-form-field style="width: 70%;">
+                <mat-label>Tamaño</mat-label>
+                <mat-select formControlName="size">
+                    <mat-option [disabled]="warehouse != null" *ngFor="let size of sizes" [value]="size">{{size | sizePipe}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="field" style="width: 350px">
+            <mat-form-field style="width: 50%;">
+              <mat-label>Precio</mat-label>
+              <input matInput type="number" placeholder="0.00" formControlName="price" required>
+            </mat-form-field>
+        </div>
+        <div class="field" style="width: 350px">
+        <mat-form-field style="width: 50%;">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" placeholder="0" formControlName="quantity" required>
+        </mat-form-field>
+        </div>       
+    </div>
+
+    <div mat-dialog-actions class="button-row">
+        <button mat-button mat-dialog-close> Cerrar </button>
+        <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="true" [disabled]="!createPatitoForm.valid"> {{warehouse ? 'Editar':'Guardar'}} </button>
+    </div>
+</form>
