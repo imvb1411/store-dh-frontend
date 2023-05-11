@@ -1,0 +1,16 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="example-toolbar">
+      <button mat-button [routerLink]="['/warehouses']">Almacen</button>
+      <button mat-button disabled="true" style="color: #808080;">Tienda</button>
+    </mat-toolbar>
+    
+    <mat-sidenav-container
+      class="example-sidenav-container"
+      [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    >
+      <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  
